@@ -1,0 +1,14 @@
+{
+  "name": "projsample",
+  "version": "1.0.0",
+  "description": "THis is demo for add Major Proj",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Uvais Ahmad Sabir Ansari CnINJAS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
