@@ -11,7 +11,8 @@ console.log("Router is connected to the main Index file");
 router.get('/',homeCont.home);
 
 //Now if routes comes with '/users' path then this routes handle by the 'users.js' routers file
-router.use('/users' , require('./users'));
+router.use('/users' , require('./users'));  //use()..its a middle ware
+
 
 //Thisis  require to export so  that server can use it 'router'
 module.exports = router;
