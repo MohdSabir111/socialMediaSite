@@ -7,11 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <!--This is used to add partials created by underscore naming  -->
-   
 
-    <h1 style="color: grey;"> HOME page rendered by ejs </h1>
+    <h1>This is the page Show by the use of Layouts and partials</h1>
+    <%- include('_header') %>
     
+    <%- body %>
+    
+    <%- include('_footer') %> 
     
 </body>
 </html>
