@@ -2,9 +2,13 @@ const express=require('express');
 var app= express();
 const db=require('./config/mongoose')
 const expressLayouts = require('express-ejs-layouts');
+//this is used to storing and workin on cookies
+const cookieParser = require('cookie-parser');
  
 app.set('view engine', 'ejs')
 app.set('views','./views')
+
+app.use(cookieParser());
 
 
 //This is use to set the layouts for all EJS files and Always define before routes m/w
