@@ -2,7 +2,7 @@
 module.exports.profile = function(req , res ){
     return res.render('profile',{
         title:'profile',
-        name:"Uvais Ahmad __sAbIR ansari",
+        name:"Uvais Ahmad __SAbIR ansari",
         location:'Muzaffarnagar'
     })
 }
