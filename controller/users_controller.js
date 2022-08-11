@@ -8,5 +8,19 @@ module.exports.profile = function(req , res ){
 }
 
 module.exports.post=function(req,res){
-    return res.render('post')
+    return res.render('post',{
+        title:'posts'
+    })
+}
+
+module.exports.signUp=function(req , res ){
+    return res.render('sign_up',{
+        title:'Sign Up'
+    });
+}
+
+module.exports.signIn=function(req , res ){
+    return res.render('sign_in',{
+        title:'Sign In'
+    });
 }
