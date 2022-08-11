@@ -10,6 +10,9 @@ app.set('views','./views')
 
 app.use(cookieParser());
 
+//This is used to accept the data from the from Tags
+app.use(express.urlencoded());
+
 
 //This is use to set the layouts for all EJS files and Always define before routes m/w
 app.use(expressLayouts);

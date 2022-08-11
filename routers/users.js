@@ -11,6 +11,8 @@ router.get('/post',userCont.post);
 //this is used to render the signup page only
 router.get('/sign-up',userCont.signUp);
 
+//this is used to render the signIn page only
 router.get('/sign-in',userCont.signIn);
 
+router.post('/create',userCont.create);
 module.exports = router;
