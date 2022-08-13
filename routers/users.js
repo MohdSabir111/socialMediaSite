@@ -14,5 +14,9 @@ router.get('/sign-up',userCont.signUp);
 //this is used to render the signIn page only
 router.get('/sign-in',userCont.signIn);
 
+//Used to signuP TO CREATE user account
 router.post('/create',userCont.create);
+
+//This is used to signIn
+router.post('/create-session' , userCont.createSession);
 module.exports = router;

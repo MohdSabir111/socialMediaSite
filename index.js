@@ -2,7 +2,7 @@ const express=require('express');
 var app= express();
 const db=require('./config/mongoose')
 const expressLayouts = require('express-ejs-layouts');
-//this is used to storing and workin on cookies
+//this is used to storing and working  on cookies
 const cookieParser = require('cookie-parser');
  
 app.set('view engine', 'ejs')

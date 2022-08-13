@@ -49,3 +49,8 @@ module.exports.create = function(req , res ){
         }
     })
 }
+
+//tHIS module used to create  session after successfully SignIn
+module.exports.createSession = function( req ,res ){
+    //todo Later
+}
