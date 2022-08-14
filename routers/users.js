@@ -19,4 +19,6 @@ router.post('/create',userCont.create);
 
 //This is used to signIn
 router.post('/create-session' , userCont.createSession);
+
+router.get('/sign-out',userCont.signOut);
 module.exports = router;

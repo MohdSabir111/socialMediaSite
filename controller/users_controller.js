@@ -1,12 +1,24 @@
+const { render } = require('ejs');
 const User = require('../models/users');
 
 //we export this function so that routers used in the controller action
 module.exports.profile = function(req , res ){
-    return res.render('profile',{
-        title:'profile',
-        name:"Uvais Ahmad __SAbIR ansari",
-        location:'Muzaffarnagar'
-    })
+    console.log(req.cookies.user_id);
+    //check users is Auth or not
+    if(req.cookies.user_id){
+        User.findById(req.cookies.user_id,function(err,user){
+        if(err){console.log("erorr to find the data in profile page",err);}
+        return res.render('profile',{
+            title:'Profile',
+            obj:user
+        })
+
+        })
+    }
+    else{
+        return res.redirect('/users/sign-in')
+    }
+    
 }
 
 module.exports.post=function(req,res){
@@ -27,6 +39,7 @@ module.exports.signIn=function(req , res ){
     });
 }
 
+//Get the signUp data
 module.exports.create = function(req , res ){
     //if pass and c-pass not matched
     if(req.body.password != req.body.c_password){
@@ -52,5 +65,33 @@ module.exports.create = function(req , res ){
 
 //tHIS module used to create  session after successfully SignIn
 module.exports.createSession = function( req ,res ){
-    //todo Later
+    //Find user
+    User.findOne({email : req.body.email } , function( err , user ){
+        
+        //handle the error
+        if(err){ console.log('Error Finding user',err);}
+
+        console.log(user);
+        //is user Exist
+        if(user){
+            //Now check Password
+            if(user.password != req.body.password){
+                return res.redirect('back');
+            }
+                //user found 
+
+            // create cookie and redirect to profile page
+            res.cookie('user_id',user._id);
+          return   res.redirect('/users/profile')
+          
+        }
+        else{
+            return res.redirect('back');
+        }
+    })
+}
+
+module.exports.signOut = function (req ,  res){
+    res.clearCookie('user_id');
+    return res.redirect('/');
 }

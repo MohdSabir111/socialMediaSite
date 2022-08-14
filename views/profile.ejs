@@ -10,9 +10,11 @@
 </head>
 <body>
   
-    <h1>This is the profile page of users </h1>
-    <h3>Name : <%= name %> </h3>
-    <h3>Location : <%= location %> </h3>
-    
+    <h1>Profile page</h1>
+    <h3>Name : <%=obj.name %> </h3>
+    <h3>Email : <%= obj.email %> </h3>
+    <h2>
+        <a href="/users/sign-out">Sign Out</a>
+    </h2>
 </body>
 </html>
