@@ -53,4 +53,6 @@ module.exports.create = function(req , res ){
 //tHIS module used to create  session after successfully SignIn
 module.exports.createSession = function( req ,res ){
     //todo Later
+    console.log('Our session is Created and render to hOME')
+    return res.redirect('/');
 }

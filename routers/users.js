@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 //This is used tto handle all routes
 const router = express.Router();
 const userCont = require('../controller/users_controller');
@@ -17,6 +18,6 @@ router.get('/sign-in',userCont.signIn);
 //Used to signuP TO CREATE user account
 router.post('/create',userCont.create);
 
-//This is used to signIn
-router.post('/create-session' , userCont.createSession);
+//This is used to signIn and This Auth Function check User Auth if Not it redirect to the SignIN PAge
+router.post('/create-session' ,passport.authenticate('local' , {failureRedirect:'/users/sign-in'}) ,userCont.createSession);
 module.exports = router;
