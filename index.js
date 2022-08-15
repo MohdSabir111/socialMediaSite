@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
+const mongoStore = require('connect-mongo');
 
 //use for passportJs library 
 // mongoStore, store the sessions cookies in the "DB"..this comes from documentations 
@@ -20,12 +21,23 @@ app.use(session({
     resave: false,
     cookie:{
         maxAge:(1000*60*100)
-    }
+    },
+
+    store: mongoStore.create(
+        {
+            mongoUrl:'mongodb://localhost:27017/sampleProject',
+            autoRemove:'disabled'
+        },
+        function(err){
+            console.log( err || 'MongoStore setUp is OK ');
+        }
+    )
 }))
 
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 
 //Ejs setup 
