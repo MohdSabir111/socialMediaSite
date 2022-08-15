@@ -5,7 +5,7 @@ const router = express.Router();
 const userCont = require('../controller/users_controller');
 
 // This routes used to handle users profile url
-router.get('/profile',userCont.profile);
+router.get('/profile',passport.checkAuthentication,userCont.profile);
 
 router.get('/post',userCont.post);
 
@@ -20,4 +20,7 @@ router.post('/create',userCont.create);
 
 //This is used to signIn and This Auth Function check User Auth if Not it redirect to the SignIN PAge
 router.post('/create-session' ,passport.authenticate('local' , {failureRedirect:'/users/sign-in'}) ,userCont.createSession);
+
+router.get('/sign-out',userCont.destroySession);
+
 module.exports = router;

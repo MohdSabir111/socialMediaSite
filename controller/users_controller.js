@@ -56,3 +56,13 @@ module.exports.createSession = function( req ,res ){
     console.log('Our session is Created and render to hOME')
     return res.redirect('/');
 }
+
+module.exports.destroySession = function (req , res){
+    
+    req.logout(function(err){
+        if(err){ console.log('Error Occur whhile logout ',err); return next(err);}
+        console.log('SIGN oUT ');
+        return res.redirect('/');
+
+    });
+}

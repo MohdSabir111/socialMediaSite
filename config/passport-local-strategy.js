@@ -41,3 +41,26 @@ passport.deserializeUser( function ( id , done){
         return done(null , user);
     })
 })
+
+// used for user is authenticated
+
+passport.checkAuthentication = function(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+return res.redirect('/users/sign-in')
+}
+
+
+//set authenticated user values
+
+passport.setAuthenticatedUser=function(req,res, next){
+    if(req.isAuthenticated()){
+        //req.user contains the current signed in user from the session cookies
+        //and locals variable only used to render the views
+        console.log("set authenticated is called");
+        res.locals.user=req.user;
+    }
+// after setting next() here req pass to the  next Transfer
+next();
+}
