@@ -27,6 +27,8 @@ module.exports.signIn=function(req , res ){
     });
 }
 
+
+// for SignUp 
 module.exports.create = function(req , res ){
     //if pass and c-pass not matched
     if(req.body.password != req.body.c_password){
@@ -53,15 +55,14 @@ module.exports.create = function(req , res ){
 //tHIS module used to create  session after successfully SignIn
 module.exports.createSession = function( req ,res ){
     //todo Later
-    console.log('Our session is Created and render to hOME')
-    return res.redirect('/');
+   return res.redirect('/');
 }
 
 module.exports.destroySession = function (req , res){
     
     req.logout(function(err){
         if(err){ console.log('Error Occur whhile logout ',err); return next(err);}
-        console.log('SIGN oUT ');
+    
         return res.redirect('/');
 
     });

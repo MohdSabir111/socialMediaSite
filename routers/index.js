@@ -7,7 +7,7 @@ const homeCont = require('../controller/homeController');
 
 console.log("Router is connected to the main Index file");
 
-//here we use the HomeCont function which is expoted 
+//here we use the HomeCont function which is exported 
 router.get('/',homeCont.home);
 
 //Now if routes comes with '/users' path then this routes handle by the 'users.js' routers file

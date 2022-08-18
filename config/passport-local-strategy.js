@@ -1,7 +1,7 @@
 const { Passport } = require('passport');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-console.log('Paaport Local Aauth Started ');
+
 const User = require('../models/users');
 
 //This is A middleware
@@ -24,7 +24,7 @@ function ( email , password , done ){
         //USER FOUND
         return done(null , user);
     });
-}
+} 
 ))
 
 //This is used to store token at client side in encrpted form
@@ -58,7 +58,7 @@ passport.setAuthenticatedUser=function(req,res, next){
     if(req.isAuthenticated()){
         //req.user contains the current signed in user from the session cookies
         //and locals variable only used to render the views
-        console.log("set authenticated is called");
+       
         res.locals.user=req.user;
     }
 // after setting next() here req pass to the  next Transfer
