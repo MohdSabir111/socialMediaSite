@@ -3,5 +3,15 @@
    
 
     <h1 id="homeHead">Codial / Home</h1>
+    <section>
+        <% if( locals.user ){ %>
+            
+            <form action="/posts/create" method="POST">
+                <textarea name="content" cols="30" rows="10" placeholder="write a post..."></textarea>
+                <input type="submit" value="Post">
+            </form>
+            
+        <% } %> 
+    </section>
     
  
