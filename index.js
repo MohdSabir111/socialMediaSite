@@ -40,6 +40,19 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
 
+
+//sass setup
+const sass_middleware =require('node-sass-middleware');
+app.use(sass_middleware({
+    src:'./assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle:'extended',
+    prefix: '/css',
+})
+
+)
+
 //Ejs setup 
 app.set('view engine', 'ejs')
 app.set('views','./views')
