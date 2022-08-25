@@ -32,7 +32,7 @@ module.exports.signIn=function(req , res ){
 module.exports.create = function(req , res ){
     //if pass and c-pass not matched
     if(req.body.password != req.body.c_password){
-        return res.redirect('back');
+        return res.redirect('back');   //back to signIN 
     }
 
     //Check User of given is already exist ?
