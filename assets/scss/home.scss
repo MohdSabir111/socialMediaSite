@@ -6,3 +6,30 @@
   
     
 }
+body{
+    margin: 10px;
+}
+
+#post-container{
+    .post{
+        margin-left: 10px;
+        padding: 20px 10px;
+        border: 1px solid grey;
+        width: 350px;
+        border-radius: 10px;
+        margin-top: 20px;
+        min-height: 100px;
+
+        h3,p{
+            margin: 5px 15px;
+            font-family: sans-serif;
+            font-weight: bolder;
+            
+        }
+        p{
+            color: lightblue;
+        }
+    }   
+
+
+}

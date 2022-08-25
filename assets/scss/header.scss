@@ -1,14 +1,12 @@
-div{
-   background-color: rgb(59, 122, 59);
-    display: flex;
-    justify-content: space-between;
+#nav{
+  background-color: rgb(59, 122, 59);
+  display: flex;
+  justify-content: space-between;
     
- h1{
-   margin: 5px 20px;
- }
-  
-}
-ul{
+  #header{
+    margin: 5px 20px;
+  }
+  ul{
     display: flex;
     margin: 5px;
     li{
@@ -19,4 +17,5 @@ ul{
         text-decoration: none;
         }
     }
+  }
 }

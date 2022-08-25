@@ -8,7 +8,7 @@ const postSchema =  mongoose.Schema({
     //we refrencing the user who created the post
     user : {
         type:mongoose.Schema.Types.ObjectId,
-        ref:'user'
+        ref:'User'
     }
 });
 

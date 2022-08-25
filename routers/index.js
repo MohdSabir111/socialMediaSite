@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 //add controller File in Homecont
-const homeCont = require('../controller/homeController');
+const homeCont = require('../controller/home_controller');
 
 console.log("Router is connected to the main Index file");
 

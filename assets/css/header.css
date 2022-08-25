@@ -1,16 +1,15 @@
-div {
+#nav {
   background-color: #3b7a3b;
   display: flex;
   justify-content: space-between; }
-  div h1 {
+  #nav #header {
     margin: 5px 20px; }
-
-ul {
-  display: flex;
-  margin: 5px; }
-  ul li {
-    margin: 2px 20px;
-    list-style: none;
-    padding-top: 5px; }
-    ul li a {
-      text-decoration: none; }
+  #nav ul {
+    display: flex;
+    margin: 5px; }
+    #nav ul li {
+      margin: 2px 20px;
+      list-style: none;
+      padding-top: 5px; }
+      #nav ul li a {
+        text-decoration: none; }
