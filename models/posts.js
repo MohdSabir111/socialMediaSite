@@ -9,7 +9,12 @@ const postSchema =  mongoose.Schema({
     user : {
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
-    }
+    },
+    //include the arry of ids of all comments in the Post Schema itself
+    comments : [{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Comment'
+    }]
 });
 
 const Post = mongoose.model('Post',postSchema);

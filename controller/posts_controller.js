@@ -1,6 +1,5 @@
-const Post = require('../models/posts');
-const { post } = require('./users_controller');
-
+const Post = require('../models/posts')
+const User =require('../models/users')
 module.exports.create = function(req , res ){
 
     Post.create({
@@ -11,4 +10,22 @@ module.exports.create = function(req , res ){
         console.log(post);
         return res.redirect('back');
     });
+}
+
+//Method to delete a post
+module.exports.destroy = function(req , res){
+    
+    //find the Post refer the id in string param
+    Post.findById(req.params.id,function(err,post){
+        if(post.user == req.user.id){
+            post.remove();
+            return res.redirect('back');
+        }
+        else{
+            return res.redirect('back');
+        }
+
+     });
+  
+   
 }

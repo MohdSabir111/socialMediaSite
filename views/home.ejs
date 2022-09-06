@@ -16,18 +16,36 @@
 
     <section id="post-container">
         <% for(post of posts) { %>
+
+            
             
             <div class="post" >
+                <span>
+                    <a class = 'delete-post-btn' href="/posts/destroy/<%= post._id %>">X</a>
+                </span>
+                
                 <h3>
                     <%= post.content %> 
                 </h3>
                 <p>
                     <%= post.user.name  %> 
                 </p>
+
+                <div  class="post-comments"> 
+                    <% if(locals.user) { %>
+                        <form action="/comments/create" methode="POST">
+                            <input type="text" name="content" placeholder="type comments..">
+                            <input type="hidden" name="post" value="<% post._id %>">
+                            <input type="submit" value="Add Comments">
+                        </form>
+                        <%} %> 
+            
+                </div>
+                
             </div>
             
         <% } %> 
 
     </section>
-    
+
  
