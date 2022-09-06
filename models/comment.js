@@ -13,10 +13,11 @@ content:{
 
  post:{
     type:mongoose.Schema.Types.ObjectId,
-    ref: 'Post'
+    ref: 'Post',
  }
-
-
+},
+    {
+       timestamps:true,
 });
 
 const Comment=mongoose.model('Comment',commentSchema);

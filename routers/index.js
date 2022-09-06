@@ -14,6 +14,7 @@ router.get('/',homeCont.home);
 router.use('/users' , require('./users'));  //use()..its a middle ware
 
 router.use('/posts',require('./posts'));
+router.use('/comments',require('./comments'));
 
 
 //Thisis  require to export so  that server can use it 'router'
