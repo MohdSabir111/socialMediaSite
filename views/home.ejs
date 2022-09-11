@@ -1,51 +1,70 @@
-<link rel="stylesheet" href="/css/home.css" >
-    <!--This is used to add partials created by underscore naming  -->
-   
+<link rel="stylesheet" href="/css/home.css" />
+<!--This is used to add partials created by underscore naming  -->
 
-    <h1 id="homeHead">Codial / Home</h1>
-    <section>
-        <% if( locals.user ){ %>
-            
-            <form action="/posts/create" method="POST">
-                <textarea name="content" cols="50" rows="10" placeholder="write a post..."></textarea>
-                <input type="submit" value="Post">
-            </form>
-            
-        <% } %> 
-    </section>
+<h1 id="homeHead">Codial / Home</h1>
+<section>
+  <% if( locals.user ){ %>
 
-    <section id="post-container">
-        <% for(post of posts) { %>
+  <form action="/posts/create" method="POST">
+    <textarea
+      name="content"
+      cols="50"
+      rows="10"
+      placeholder="write a post..."
+    ></textarea>
+    <input type="submit" value="Post" />
+  </form>
 
-            
-            
-            <div class="post" >
-                <span>
-                    <a class = 'delete-post-btn' href="/posts/destroy/<%= post._id %>">X</a>
-                </span>
-                
-                <h3>
-                    <%= post.content %> 
-                </h3>
-                <p>
-                    <%= post.user.name  %> 
-                </p>
+  <% } %>
+</section>
 
-                <div  class="post-comments"> 
-                    <% if(locals.user) { %>
-                        <form action="/comments/create" method="POST">
-                            <input type="text" name="content" placeholder="type comments..">
-                            <input type="hidden" name="post" value="<%= post._id %>">
-                            <input type="submit" value="Add Comments">
-                        </form>
-                        <%} %> 
-            
-                </div>
-                
-            </div>
-            
-        <% } %> 
+<section id="post-container">
+  <% for(post of posts) { %>
+  <div class="post">
+    <% if(locals.user && locals.user.id==post.user.id) {%>
+    <span>
+      <a class="delete-post-btn" href="/posts/destroy/<%= post._id %>">X</a>
+    </span>
+    <% } %>
+    <h3><%= post.content %></h3>
+    <p><%= post.user.name %></p>
 
-    </section>
+    <div class="post-comments">
+      <% if(locals.user) { %>
+      <form action="/comments/create" method="POST">
+        <input
+          type="text"
+          name="content"
+          placeholder="type comments.."
+          required
+        />
+        <input type="hidden" name="post" value="<%= post._id %>" />
+        <input type="submit" value="Add Comments" />
+      </form>
+      <%} %>
 
- 
+      <div class="post-comments-list">
+        <ul id="post-comments-<%=post._id  %> ">
+          <% for(comment of post.comments) {%> <% if(locals.user &&
+          locals.user.id==comment.user.id) {%>
+          <span>
+            <a
+              class="delete-post-btn"
+              href="/comments/destroy/<%= comment._id %>"
+              >X</a
+            >
+          </span>
+          <% } %>
+          <p>
+            <%= comment.content %>
+            <br />
+            <small> <%=comment.user.name %> </small>
+          </p>
+          <%} %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <% } %>
+</section>
