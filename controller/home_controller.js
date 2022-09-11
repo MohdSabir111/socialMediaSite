@@ -5,6 +5,12 @@ const Post = require('../models/posts');
 module.exports.home = function(req ,res ){
     Post.find({})
     .populate('user') // used to populate the user which ref by the post
+    .populate({
+        path:'comments',
+        populate:{
+            path:'user'
+        }
+    })
     .exec(function(err , data){     // exec() is the callback function
         if(err){console.log('Error ',err);}
         return res.render('home' , {
