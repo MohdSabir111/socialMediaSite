@@ -2,10 +2,12 @@ const User = require('../models/users');
 
 //we export this function so that routers used in the controller action
 module.exports.profile = function(req , res ){
-    return res.render('profile',{
-        title:'profile',
-        name:"Uvais Ahmad __SAbIR ansari",
-        location:'Muzaffarnagar'
+    User.findById(req.params.id,function(err,user){
+        return res.render('profile',{
+            title:'profile',
+            all_users : user
+    })
+  
     })
 }
 

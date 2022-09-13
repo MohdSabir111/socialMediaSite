@@ -5,7 +5,7 @@ const router = express.Router();
 const userCont = require('../controller/users_controller');
 
 // This routes used to handle users profile url
-router.get('/profile',passport.checkAuthentication,userCont.profile);
+router.get('/profile/:id',passport.checkAuthentication,userCont.profile);
 
 router.get('/post',userCont.post);
 

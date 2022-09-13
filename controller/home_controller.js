@@ -1,5 +1,7 @@
 const { render } = require('ejs');
 const Post = require('../models/posts');
+const User= require('../models/users');
+
 
 
 module.exports.home = function(req ,res ){
@@ -12,10 +14,16 @@ module.exports.home = function(req ,res ){
         }
     })
     .exec(function(err , data){     // exec() is the callback function
-        if(err){console.log('Error ',err);}
+
+         User.find({}, function(err,users){
+            if(err){console.log('Error ',err);}
         return res.render('home' , {
             title:'Home Page',
-            posts : data
+            posts : data,
+            all_users : users
+
+        })
+        
         })
     })
 }
