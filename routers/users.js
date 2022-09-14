@@ -6,6 +6,7 @@ const userCont = require('../controller/users_controller');
 
 // This routes used to handle users profile url
 router.get('/profile/:id',passport.checkAuthentication,userCont.profile);
+router.post('/update/:id',passport.checkAuthentication,userCont.update);
 
 router.get('/post',userCont.post);
 
