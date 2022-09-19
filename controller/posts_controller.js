@@ -1,26 +1,34 @@
 const Post = require('../models/posts');
 const User =require('../models/users');
 const Comment = require('../models/comment');
-module.exports.create = function(req , res ){
 
-    Post.create({
-        content : req.body.content,
-        user:req.user._id
-    },function( err , post){
-        if(err){ console.log('Error occur While storing Data');}
-        console.log(post);
+
+module.exports.create =  async function(req , res ){
+    try{
+
+        await Post.create({
+            content : req.body.content,
+            user:req.user._id
+        });
         return res.redirect('back');
-    });
+    
+
+    }catch(err){
+        console.log("error",err);
+    }
+
+   
 }
 
 //Method to delete a post
-module.exports.destroy = function(req , res){
+module.exports.destroy = async function(req , res){
     
     //find the Post refer the id in string param
-    Post.findById(req.params.id,function(err,post){
+    try{
+        let post = await Post.findById(req.params.id)
         if(post.user == req.user.id){
             post.remove();
-            Comment.deleteMany({post: req.params.id}, function(err){
+          await  Comment.deleteMany({post: req.params.id}, function(err){
                 return res.redirect('back');
 
             });
@@ -30,7 +38,9 @@ module.exports.destroy = function(req , res){
             return res.redirect('back');
         }
 
-     });
-  
+    }catch(err){
+        console.log("error",err);
+    }
+ 
    
 }
