@@ -21,18 +21,14 @@ module.exports.create =  async function(req , res ){
 }
 
 //Method to delete a post
-module.exports.destroy = async function(req , res){
-    
-    //find the Post refer the id in string param
+     module.exports.destroy = async function(req , res){
+       //find the Post refer the id in string param
     try{
         let post = await Post.findById(req.params.id)
-        if(post.user == req.user.id){
+         if(post.user == req.user.id){
             post.remove();
-          await  Comment.deleteMany({post: req.params.id}, function(err){
-                return res.redirect('back');
-
-            });
-            
+            await  Comment.deleteMany({post: req.params.id});
+            return res.redirect('back');
         }
         else{
             return res.redirect('back');
