@@ -12,6 +12,11 @@ const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
 const mongoStore = require('connect-mongo');
 
+
+// settingup connect-flash 
+const flash = require('connect-flash');
+const customMWare = require('./config/middleware');
+
 //use for passportJs library 
 // mongoStore, store the sessions cookies in the "DB"..this comes from documentations 
 app.use(session({
@@ -39,6 +44,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
+app.use(flash());  // use after session and passportjs middleware
+app.use(customMWare.setFlash);
+
 
 
 //sass setup
@@ -52,6 +60,8 @@ app.use(sass_middleware({
 })
 
 )
+
+
 
 //Ejs setup 
 app.set('view engine', 'ejs')

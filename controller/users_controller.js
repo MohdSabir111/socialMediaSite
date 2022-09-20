@@ -68,15 +68,16 @@ module.exports.create = function(req , res ){
 
 //tHIS module used to create  session after successfully SignIn
 module.exports.createSession = function( req ,res ){
-    //todo Later
+    req.flash('success','Logged In Successfully..!!!')
    return res.redirect('/');
 }
-
+  
+// for logged out 
 module.exports.destroySession = function (req , res){
     
     req.logout(function(err){
         if(err){ console.log('Error Occur whhile logout ',err); return next(err);}
-    
+        req.flash('success','Logged Out...!!!')
         return res.redirect('/');
 
     });
