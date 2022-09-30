@@ -4,20 +4,24 @@ const LocalStrategy = require('passport-local');
 
 const User = require('../models/users');
 
-//This is A middleware
+//This is A middleware...authentication using passportJs
 passport.use( new LocalStrategy({
-    usernameField : 'email'
+    usernameField : 'email',
+    passReqToCallback : true
 } ,
 //Check user Auth or Not
-function ( email , password , done ){
+function ( req, email , password , done ){
     //find User is Auth 
     User.findOne({ email : email } , function(err , user){
 
         //if Error Occur Then handle it
-        if(err){ return done(err); }
+        if(err){ 
+            req.flash('error',err);
+            return done(err); }
 
         //if Not user || user Password not matched the entered password
         if( !user || user.password != password ){
+            req.flash('error','Invalid Username/Password');
             return done(null , false);
         }
 

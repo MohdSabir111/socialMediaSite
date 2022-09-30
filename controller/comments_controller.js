@@ -4,9 +4,9 @@ const Post=require('../models/posts');
 module.exports.create=function(req,res){
     //find the posts in db
     Post.findById(req.body.post,function(err,post){
-        console.log(req.body.post)
+   
 
-        if(err){console.log(`Error in creating comment :  ${err} `)}
+        if(err){req.flash('error','you can not comments')}
 
         if(post){
             Comment.create({
@@ -18,6 +18,7 @@ module.exports.create=function(req,res){
                 console.log(comment)
                 post.comments.push(comment);
                 post.save();
+                req.flash('success','comment is added');
                 res.redirect('/');
 
             }
@@ -35,7 +36,7 @@ module.exports.destroy=function(req, res){
             comment.remove();
 
             Post.findByIdAndUpdate(postId,{ $pull:{comments: req.params.id}},function(err,post) {
-
+                req.flash('success','comment is deleted')
                 return res.redirect('back');
             })
         }else{
