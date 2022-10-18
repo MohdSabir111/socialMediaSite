@@ -5,7 +5,7 @@ const router = express.Router();
 //add controller File in Homecont
 const homeCont = require('../controller/home_controller');
 
-console.log("Router is connected to the main Index file");
+
 
 //here we use the HomeCont function which is exported 
 router.get('/',homeCont.home);
@@ -15,6 +15,8 @@ router.use('/users' , require('./users'));  //use()..its a middle ware
 
 router.use('/posts',require('./posts'));
 router.use('/comments',require('./comments'));
+
+router.use('/api',require('./api'));
 
 
 //Thisis  require to export so  that server can use it 'router'
